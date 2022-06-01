@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+<link rel="stylesheet" href="../Static/Iconos/style.css">
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: url(Imagenes/8.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.saludo {
+    margin-top: 50px;
+    font-weight: bold;
+    color: #f0f0f0;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    min-height: 50px;
+    text-shadow: 1px 1px 2px black;
+}
+
+.saludo strong{
+    color: #00ff5d;
+}
+
+.container {
+    margin: auto;
+    min-width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 25%;
+}
+
+.container .card {
+    position: relative;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.container .card a {
+    text-decoration: none;
+    color: #f0f0f0;
+    font-size: 24px;
+    text-align: center;
+}
+
+.container .card a:hover .face.face1 {
+    transform: translateY(0);
+    color: #00ff5d;
+    border-bottom: 3px solid #00ff5d;
+    border-radius: 16px 16px 0 0;
+}
+
+.container .card a:hover .face.face2{
+    transform: translateY(0);
+    color: #f0f0f0;
+    background: rgb(0 0 0 / 85%);
+    border-radius: 0 0 16px 16px;
+}
+
+.container .card .face {
+    width: 260px;
+    height: 200px;
+    transition: 0.3s;
+}
+
+.container .card .face.face1 {
+    border-radius: 16px;
+    position: relative;
+    background: rgb(0 0 0 / 85%);
+    /*background: #111317;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+
+.container .card .face.face2 {
+    color: rgba(0, 0, 0, 0.0);
+    position: relative;
+    background: none;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 12px;
+    box-sizing: border-box;
+    transform: translateY(-100px);
+}
+
+.container .card .face.face1 .content {
+    text-align: center;
+}
+
+.container .card a .face.face1 .content h3{
+    margin: 10px 0 0;
+    text-align: center;
+}
+
+.container .card .face.face2 .content p{
+    margin: 0;
+    padding: 0;
+}
+
+.container .material-icons{
+    font-size: 126px;
+}
+
+.footter {
+    height: 60px;
+    position: absolute;
+    top: 90%;
+    left: 88%;
+}
+
+.footter a {
+    display: flex;
+    text-decoration: none;
+    color: #f0f0f0;
+    align-items: center;
+}
+
+.footter a p {
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.footter a .material-icons{
+    font-size: 40px;
+}
+
+.footter a:hover{
+    color: #FF8000;
+}
+
+</style>
+<head>
+  <meta charset="UTF-8">
+  <title>menuCliente</title>
+</head>
+<body>
+    <div class="saludo">
+        <p>Bienvend@ <strong th:text="${usuarioSaludo.nombre}"></strong> .</p>
+    </div>
+    <div class="container">
+        <div class="card">
+            <a href="/info">
+                <div class="face face1">
+                    <div class="content">
+                        <span class="material-icons"> person </span>
+                        <h3>Mi Perfil</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>Aquí podrás ver y modificar todos los datos de tu cuenta; nombre, email, bancaria...</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/listaUsuarios">
+                <div class="face face1">
+                    <div class="content">
+                        <span class="material-icons"> people_alt </span>
+                        <h3>Clientes</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>Consulta toda la información de tus clientes; Datos personales, creación-edición y borrado de tablas, etc.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/listaEjercicios">
+                <div class="face face1">
+                    <div class="content">
+                        <span class="material-icons"> library_books </span>
+                        <h3>Ejercicios</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>Consulta los mejores ejercicios a realizar ordenados por grupo muscular.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/listaComidas">
+                <div class="face face1">
+                    <div class="content">
+                        <span class="material-icons"> restaurant </span>
+                        <h3>Alimentación</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>Descubre las recetas fitness más ricas, saludables y nutritivas para ayudarte a conseguir tu cambio deseado.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="footter">
+        <a href="/"><p>Cerrar sesión</p><span class="material-icons"> logout </span></a>
+    </div>
+</body>
+</html>

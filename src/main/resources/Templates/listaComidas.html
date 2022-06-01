@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+<link rel="stylesheet" href="../Static/Iconos/style.css">
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: url(Imagenes/8.jpg) no-repeat;
+    background-size: 100%;
+    background: #000;
+}
+
+.encabezado {
+   display: flex;
+   margin-left: 10%;
+}
+
+.material-icons {
+    font-size: 40px;
+}
+
+.encabezadodos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 38%;
+    padding-right: 100px;
+}
+
+.encabezadodos a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+}
+
+.encabezadodos a p{
+    margin-right: 10px;
+}
+
+.encabezadodos a span {
+    font-size: 64px;
+}
+
+.encabezado .encabezadodos .temp1 {
+    margin-right: 50px;
+}
+
+.encabezado .encabezadodos .temp1 a:hover{
+    color: #00ff5d;
+}
+
+.encabezado .encabezadodos .temp2 a:hover{
+    color: #ff8000;
+}
+
+h1 {
+    text-shadow: 1px 1px 2px black;
+    color: #f0f0f0;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+table {
+    box-sizing: content-box;
+    border-collapse: collapse;
+    min-width: 80%;
+    margin: 0 auto 5rem;
+    text-align: center;
+}
+
+th { 
+    padding: 8px;
+    font-size: 16px;
+    width: max-content;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.material-icons {
+    font-size: 40px;
+}
+
+th span a:hover{
+    color: #f0f0f0;
+}
+
+tr, td {
+    transition: 0.1s;
+} 
+
+thead tr:first-child {
+    background: #000;
+    color: #fff;
+    border-bottom: 1px solid #00ff5d;
+}
+
+tbody tr {
+    background: rgb(0 0 0 / 70%);
+    color: #fff;
+    border-bottom: 1px solid #00ff5d;
+}
+
+tr:hover:not(#firstrow), tr:hover td:empty {
+    background: #00ff5d;
+    color: #000;
+    pointer-events: visible;
+}
+
+tr:hover .material-icons{
+    color: #000;
+}
+
+tr:hover .material-icons:hover {
+    color: #FF8000;
+}
+
+tr:hover:not(#firstrow) {
+    transform: scale(1.03);
+}
+
+</style>
+</head>
+<body>
+    <div class="encabezado">
+        <h1>COMIDAS</h1>
+        <div class="encabezadodos">
+            <div class="temp1">
+                <a th:if="${usuario.rol}=='0'"href="#">
+                    <p>Añadir Comida</p>
+                    <span class="material-icons"> playlist_add </span>
+                </a>
+            </div>
+            <div class="temp2">
+                <a href="#">
+                    <p>Volver a Menú</p>
+                    <span class="material-icons"> reply </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <table id="racetimes">
+        <thead>
+            <tr id="firstrow">
+                <th>NOMBRE</th>
+                <th>¿CÓMO HACERLA?</th>
+                <th th:if="${usuario.rol}=='0'">MODIFICAR</th>
+                <th th:if="${usuario.rol}=='0'">ELIMINAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="comida : ${listaComidas}">
+                <th><span th:text ="${comida.nombre}">...</a></span></th>
+                <th><a th:href="${comida.url}"><span class="material-icons"> play_arrow </span></a></th>
+                <!-- <th th:if="${usuario.rol}=='0'"><a th:href=""><span class="material-icons"> playlist_add </span></a></th> -->
+                <th th:if="${usuario.rol}=='0'"><a href=""><span class="material-icons"> edit_note </span></a></th>
+                <th th:if="${usuario.rol}=='0'"><a href="@{/eliminarComida/{id}(id=${comida.id})}"><span class="material-icons"> clear </span></a></th>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

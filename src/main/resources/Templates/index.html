@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+<link rel="stylesheet" href="/Iconos/style.css">
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    overflow: hidden;
+    background: url(Imagenes/1.jpg) no-repeat;
+    background-size: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 60px;
+    font-weight: 300;
+  }
+
+  strong {
+    color: #00ff5d;
+  }
+
+  #wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: rgb(0 0 0 / 60%);
+  }
+
+  #right {
+    flex: 1;
+  }
+
+
+/* Sign In */
+#signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  padding-bottom: 1rem;
+}
+
+#signin form {
+  width: 80%;
+  padding-bottom: 1rem;
+}
+
+#signin .logo {
+  margin-bottom: 8vh;
+}
+
+#signin .logo img {
+  width: 300px;
+}
+
+#signin label {
+  text-shadow: 1px 1px 2px black;
+  font-size: 16px;
+  line-height: 2rem;
+  font-weight: 500;
+}
+
+#signin .text-input {
+  margin-bottom: 1.3rem;
+  width: 100%;
+  border-radius: 2px;
+  background: #181818;
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  line-height: 1.3rem;
+}
+
+#signin .primary-btn {
+  font-size: 18px;
+  color: #202020;
+  width: 80%;
+  margin-left: 10%;
+}
+
+#signin .secondary-btn,
+.or,
+.links {
+  width: 65%;
+}
+
+#signin .links a {
+  display: block;
+  color: #fff;
+  text-shadow: 1px 1px 2px black;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+#signin .links a:hover {
+  color: #FF8000;
+}
+
+#signin .or {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.2rem;
+  align-items: center;
+}
+
+#signin .or .bar {
+  flex: auto;
+  border: none;
+  height: 1px;
+  background: #aaa;
+}
+
+#signin .or span {
+  color: #ccc;
+  padding: 0 0.8rem;
+}
+
+/* Showcase */
+#showcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+#showcase .showcase-text {
+  font-size: 3rem;
+  width: 100%;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+#showcase .secondary-btn {
+  width: 60%;
+  margin-left: 133px;
+  margin-top: 32px;
+  text-shadow: 1px 1px 2px black;
+}
+
+/* Footer */
+#main-footer {
+  padding-top: 1rem;
+  color: #ccc;
+  text-align: center;
+  font-size: 0.8rem;
+  max-width: 80%;
+}
+
+#main-footer a {
+  color: #00ff5d;
+  text-decoration: underline;
+}
+
+/* Button */
+.primary-btn {
+  background: linear-gradient(to right bottom, #00ff6c, #009e43);
+  padding: 0.7rem 1rem;
+  height: 2.7rem;
+  margin-top: 20px;
+  display: block;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.primary-btn:hover {
+  background: linear-gradient(to right bottom, #00ff5d, #00ff5d);
+}
+
+.secondary-btn {
+  padding: 0.7rem 1rem;
+  height: 2.7rem;
+  display: block;
+  border: 1px solid #f4f4f4;
+  border-radius: 2px;
+  font-weight: 500;
+  background: none;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.secondary-btn:hover {
+  border-color: #00ff5d;
+  color: #00ff5d;
+}
+
+.social p{
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.social, .social a{
+  margin-top: 20px;
+  text-decoration: none;
+  color: #ccc;
+  font-size: 32px;
+  margin-right: 16px;
+}
+
+.social a:hover {
+  color: #00ff5d;
+}
+
+.perks {
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  margin-top: 32px;
+  margin-left: 74px;
+  list-style: none;
+}
+
+li:before {
+  vertical-align: 16%;
+  font-size: 16px;
+  content: "\25a2";  /*"\2b24"*/  /*"\25a2"*/ /*"\2714"*/ /*"\1F79B"*/   
+  color: #00ff5d;
+  display: inline-block;
+  margin-left: 22px;
+  margin-right: 10px;
+}
+
+.perks li {
+  text-shadow: 1px 1px 2px black;
+  font-size: 22px;
+  margin: 16px;
+}
+
+/* Media Queries */
+@media (min-width: 1200px) {
+  #left {
+    flex: 4;
+  }
+
+  #right {
+    flex: 6;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+
+  #right {
+    display: none;
+  }
+
+  #left {
+    justify-content: start;
+    margin-top: 4vh;
+  }
+
+  #signin .logo {
+    margin-bottom: 2vh;
+  }
+
+  #signin .text-input {
+    margin-bottom: 0.7rem;
+  }
+
+}
+
+</style>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="right">
+      <div id="showcase">
+        <div class="showcase-content">
+          <h1 class="showcase-text">
+            ¡ Tu cambio comienza <strong>ahora</strong> !
+          </h1>
+          <div class="perks">
+            <ul>
+              <li>Te ayudo a cumplir tus objetivos.</li>
+              <li>Realiza ejercicio dónde y cuándo quieras.</li>
+              <li>Entrenamientos adaptativos y personalizados.</li>
+              <li>Mira tu progresión mediante gráficas detalladas.</li>
+              <!-- <li>Amplio catálogo de ejercicios para realizar.</li> -->
+            </ul>
+          </div>
+          <a href="#" class="secondary-btn">Infórmate sobre las ofertas GFHome.</a>
+        </div>
+      </div>
+    </div>
+    <div id="left">
+      <div id="signin">
+        <div class="logo">
+          <img src="" alt="Sluralpright"/>
+        </div>
+        <form action = "#" th:action="@{/}" th:object="${usuario}" method="post">
+          <!-- <div class="inputs"> -->
+            <div>
+              <label>Email de usuario:</label>
+              <input type="text" class="text-input" th:field="*{email}"/>
+            </div>
+            <div>
+              <label>Contraseña:</label>
+              <input type="password" class="text-input" th:field="*{contrasenia}"/>
+            </div>
+            <!-- </div> -->
+            <button type="submit" class="primary-btn">Iniciar sesión</button>
+          </form>
+          <div class="links">
+            <a href="#">¿Has olvidado tu nombre de usuario o contraseña?</a>
+          </div>
+          <div class="or">
+            <hr class="bar"/>
+            <span>ó</span>
+            <hr class="bar"/>
+          </div>
+          <a href="/registro" class="secondary-btn">¡ Registrarme y empezar ahora !</a>
+        </div>
+        <div class="social">
+          <p>Sígueme en mis redes sociales :</p>
+          <a href="#"><i class="icon-facebook"></i></a>
+          <a href="#"><i class="icon-twitter"></i></a>
+          <a href="#"><i class="icon-instagram"></i></a>
+          <a href="#"><i class="icon-youtube"></i></a>
+          <a href="#"><i class="icon-spotify"></i></a>
+        </div>
+        <footer id="main-footer">
+          <p>Copyright &copy; 2022, Igorcito All Rights Reserved</p>
+          <div>
+            <a href="#">Términos de uso</a> | <a href="#">Política de privacidad</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+  </html>

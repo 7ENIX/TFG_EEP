@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #111317;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+}
+
+input{
+    width: 420px;
+}
+
+</style>
+<body>
+    <form action = "#" th:action="@{/registro}" th:object="${usuario}" method="post">
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" placeholder="Escribe aquí tu nombre.">
+    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" style="color: red"></span><br/>
+    <br>
+    <label>1º Apellido:</label>
+    <input type="text" th:field="*{apellido1}" placeholder="Escribe aquí tu primer apellido.">
+    <span th:if="${#fields.hasErrors('apellido1')}" th:errors="*{apellido1}" style="color: red"></span><br/>
+    <br>
+    <label>2º Apellido:</label>
+    <input type="text" th:field="*{apellido2}" placeholder="Escribe aquí tu segundo apellido.">
+    <span th:if="${#fields.hasErrors('apellido2')}" th:errors="*{apellido2}" style="color: red"></span><br/>
+    <br>
+    <label>Email:</label>
+    <input type="email" size="30" required th:field="*{email}" placeholder="Escribe aquí tu email.">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span><br/>
+    <br>
+    <label>Fecha de Nacimiento:</label>
+    <input type="date" th:field="*{fechaNacimiento}" placeholder="Escribe aquí fecha de nacimiento.">
+    <span th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}" style="color: red"></span><br/>
+    <span th:if="${MensajeDeError!=null}" th:text="${MensajeDeError}" style="color: red"></span>
+    <br>
+    <label>Altura:</label>
+    <input type="number" step="any" th:field="*{altura}" placeholder="Escribe aquí cuánto mides.">
+    <span th:if="${#fields.hasErrors('altura')}" th:errors="*{altura}" style="color: red"></span><br/>
+    <br>
+    <label>Peso:</label>
+    <input type="number" step="any" th:field="*{peso}" placeholder="Escribe aquí cuánto pesas.">
+    <span th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}" style="color: red"></span><br/>
+    <br>
+    <label>Nº de Cuenta: ES</label>
+    <input type="text" th:field="*{cuentaBancaria}" placeholder="Escribe aquí el número de cuenta donde se cargará la mensualidad.">
+    <span th:if="${#fields.hasErrors('cuentaBancaria')}" th:errors="*{cuentaBancaria}" style="color: red"></span><br/>
+    <br>
+    <label>Constraseña:</label>
+    <input type="password" th:field="*{contrasenia}" placeholder="Escribe aquí una contraseña para tu cuenta.">
+    <span th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}" style="color: red"></span><br/>
+    <br>
+    <div class="button">
+        <input type="submit" value="REGISTRARME">
+    </div>
+</form>
+</body>
+</html>
