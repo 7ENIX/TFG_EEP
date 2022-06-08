@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+<head>
+	<meta charset="utf-8">
+	<title>Añadir Ejercicio</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+		* {
+			margin:0;
+			padding:0;
+			box-sizing: border-box;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		body {
+			display: flex;
+			height: 100vh;
+			justify-content: center;
+			align-items: center;
+			padding: 10px;
+			background: url(Imagenes/10.jpg) no-repeat;
+			background-size: 100%;
+		}
+
+		.container {
+			max-width: 700px;
+			width: 100%;
+			padding: 25px 30px;
+			border-radius: 5px;
+			background: rgb(0 0 0 / 65%);
+		}
+
+		.container .title {
+			font-size: 25px;
+			font-weight: 500;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.temp2 a{
+			color: #fff;
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+		}
+
+		.temp2 a p{
+			font-size: 16px;
+			margin-right: 5px;
+		}
+
+		.material-icons{
+			font-size: 36px;
+		}
+
+		.temp2 a:hover{
+    		color: #ff8000;
+    	}
+
+		.container form .user-details {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin: 20px 0 12px 0;
+		}
+
+		form .user-details .input-box {
+			margin-bottom: 15px;
+			width: calc(100% / 2 - 20px);
+
+		}
+
+		.user-details .input-box .details {
+			display: block;
+			font-weight: 500;
+			margin-bottom: 5px;
+			color: #fff;
+		}
+
+		.user-details .input-box input {
+			height: 45px;
+			width: 100%;
+			outline: none;
+			color: #ccc;
+			background: #181818;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			padding-left: 15px;
+			font-size: 16px;
+			border-bottom-width: 2px;
+			transition: all 0.3s ease;
+		}
+
+		.user-details .input-box input:focus,
+		.user-details .input-box input:valid {
+			border-color: #00ff5d;
+		}
+
+		/*------------------------------------------*/
+
+		form .user-details .input-box2 {
+			margin-bottom: 15px;
+			width: 100%;
+		}
+
+		.user-details .input-box2 .details {
+			display: block;
+			font-weight: 500;
+			margin-bottom: 5px;
+			color: #fff;
+		}
+
+		.user-details .input-box2 input {
+			height: 45px;
+			width: 100%;
+			outline: none;
+			color: #ccc;
+			background: #181818;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			padding-left: 15px;
+			font-size: 16px;
+			border-bottom-width: 2px;
+			transition: all 0.3s ease;
+		}
+
+		.user-details .input-box2 input:focus,
+		.user-details .input-box2 input:valid {
+			border-color: #00ff5d;
+		}
+
+		form .button {
+			height: 45px;
+			margin: 45px 100px;
+		}
+
+		form .button input {
+			height: 100%;
+			width: 100%;
+			outline-color: none;
+			color: #000;
+			border: none;
+			border-radius: 5px;
+			font-size: 18px;
+			font-weight: 500;
+			letter-spacing: 1px;
+			background: #ededed;
+		}
+
+		form .button input:hover {
+			color: #1e1e1e;
+			background: #00ff5d;
+		}
+
+		strong {
+			color: #00ff5d;
+		}
+}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="title">
+			<p><strong>AÑADIR</strong> UN EJERCICIO</p>
+			<div class="temp2">
+                <a href="/listaEjercicios">
+                    <p>Volver a Ejercicios</p>
+                    <span class="material-icons"> reply </span>
+                </a>
+            </div>
+		</div>
+		<br>
+		<form action = "#" th:action="@{/añadirEjercicioOK}" th:object="${ejercicio}" method="post">
+			<div class="user-details">
+				<div class="input-box">
+					<span class="details">NOMBRE:</span>
+					<input type="text" th:field="*{nombre}" placeholder="Escribe el nombre del ejercicio.">
+					<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" style="color: red"></span><br/>
+				</div>
+				<div class="input-box">
+					<span class="details">ZONA:</span>
+					<input type="text" th:field="*{zona}" placeholder="Define la zona de trabajo.">
+					<span th:if="${#fields.hasErrors('zona')}" th:errors="*{zona}" style="color: red"></span><br/>
+				</div>
+				<div class="input-box2">
+					<span class="details">LINK DEL VIDEO:</span>
+					<input type="text" th:field="*{url}" placeholder="Indica el enlace del vídeo que explica el ejercicio.">
+					<span th:if="${#fields.hasErrors('url')}" th:errors="*{url}" style="color: red"></span><br/>
+				</div>
+			</div>
+			<div class="button">
+				<input type="submit" value="AÑADIR EJERCICIO">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

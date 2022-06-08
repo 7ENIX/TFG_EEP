@@ -9,9 +9,9 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background: url(Imagenes/8.jpg) no-repeat;
+    background: url(Imagenes/10.jpg) no-repeat;
     background-size: 100%;
-    background: #000;
+    background-attachment: fixed;
 }
 
 .encabezado {
@@ -137,7 +137,7 @@ tr:hover:not(#firstrow) {
         <h1>CLIENTES</h1>
         <div class="encabezadodos">
             <div class="temp2">
-                <a href="#">
+                <a href="/menuEntrenador">
                     <p>Volver a Menú</p>
                     <span class="material-icons"> reply </span>
                 </a>
@@ -149,8 +149,7 @@ tr:hover:not(#firstrow) {
             <tr id="firstrow">
                 <th>NOMBRE</th>
                 <th>VER TABLA</th>
-                <th>EDITAR TABLA</th>
-                <th>NUEVA TABLA</th>
+                <th>AÑADIR EJERCICIO</th>
                 <th>VER USUARIO</th>
                 <th>ELIMINAR USUARIO</th>
             </tr>
@@ -159,9 +158,8 @@ tr:hover:not(#firstrow) {
             <tr th:each="usuario : ${listaUsuarios}">
                 <th th:text="${usuario.nombre} + ' ' + ${usuario.apellido1} + ' ' + ${usuario.apellido2}"></th>
                 <th><a th:href="@{/verTabla/{id}(id=${usuario.id})}"><span class="material-icons"> format_list_numbered </span></a></th>
-                <th><a href="/crearEditarTablaCliente"><span class="material-icons"> edit_note </span></a></th>
-                <th><a href="/crearEditarTablaCliente"><span class="material-icons"> post_add </span></a></th>
-                <th><a href=""><span class="material-icons"> person </span></a></th>
+                <th><a th:href="@{/añadirTabla/{id}(id=${usuario.id})}"><span class="material-icons"> post_add </span></a></th>
+                <th><a th:href="@{/verPerfilCliente/{id}(id=${usuario.id})}"><span class="material-icons"> person </span></a></th>
                 <th><a th:href="@{/eliminarCliente/{id}(id=${usuario.id})}"><span class="material-icons"> person_remove </span></a></th>
             </tr>
         </tbody>

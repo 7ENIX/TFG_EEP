@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>verPerfil</title>
 </head>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Roboto:300');
@@ -21,12 +21,12 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background: url(Imagenes/10.jpg) no-repeat;
+    background: url(http://localhost:8080/Imagenes/7.jpg) no-repeat;
     background-size: 100%;
   }
 
   .container {
-    max-width: 700px;
+    max-width: 600px;
     width: 100%;
     padding: 25px 30px;
     border-radius: 5px;
@@ -41,6 +41,34 @@
     justify-content: space-between;
   }
 
+  .material-icons{
+    font-size: 36px;
+  }
+
+  .temp1 {
+    display: flex;
+  }
+
+  .temp1 a{
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .temp1 a p{
+    font-size: 16px;
+    margin-right: 5px;
+  }
+
+  .temp1 a:hover{
+    color: #00ff5d;
+  }
+
+  .temp2 {
+    display: flex;
+  }
+
   .temp2 a{
     color: #fff;
     text-decoration: none;
@@ -51,10 +79,6 @@
   .temp2 a p{
     font-size: 16px;
     margin-right: 5px;
-  }
-
-  .material-icons{
-    font-size: 36px;
   }
 
   .temp2 a:hover{
@@ -158,70 +182,62 @@
   strong {
     color: #00ff5d;
   }
+
+  .infofield {
+    margin-left: 10px;
+  }
+
 </style>
 <body>
   <div class="container">
     <div class="title">
-      <p><strong>REGISTRO</strong> DE USUSARIO</p>
-      <div class="temp2">
-        <a href="/">
-          <p>Volver al login</p>
+      <p>MI <strong>PERFIL</strong></p>
+      <div class="temp1">
+        <a th:href="@{/modificarPerfil/{id}(id=${usuario.id})}">
+          <p>Editar perfil</p>
+          <span class="material-icons"> edit_note </span>
+        </a>
+      </div>
+      <div class="temp2" th:if="${usuario.rol}==0">
+        <a href="/menuEntrenador">
+          <p>Volver a Menú</p>
+          <span class="material-icons"> reply </span>
+        </a>
+      </div>
+      <div class="temp2" th:if="${usuario.rol}==1">
+        <a href="/menuCliente">
+          <p>Volver a Menú</p>
           <span class="material-icons"> reply </span>
         </a>
       </div>
     </div>
     <br>
-    <form action = "#" th:action="@{/registro}" th:object="${usuario}" method="post">
+    <form action = "#" th:object="${usuario}" method="post">
       <div class="user-details">
-        <div class="input-box2">
-          <span class="details">NOMBRE:</span>
-          <input type="text" th:field="*{nombre}" placeholder="¿Cómo te llamas?">
-          <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" style="color: red"></span><br/>
-        </div>
-        <div class="input-box2">
-          <span class="details">FECHA DE NACIMIENTO:</span>
-          <input type="date" th:field="*{fechaNacimiento}" placeholder="Indica tu fecha de nacimiento.">
-          <span th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}" style="color: red"></span><br/>
-          <span th:if="${MensajeDeError!=null}" th:text="${MensajeDeError}" style="color: red"></span>
-        </div>
-        <div class="input-box2">
-          <span class="details">1º APELLIDO:</span>
-          <input type="text" th:field="*{apellido1}" placeholder="¿Cuál es tu primer apellido?">
-          <span th:if="${#fields.hasErrors('apellido1')}" th:errors="*{apellido1}" style="color: red"></span><br/>
-        </div>
-        <div class="input-box2">
-          <span class="details">2º APELLIDO:</span>
-          <input type="text" th:field="*{apellido2}" placeholder="¿Cuál es tu segundo apellido?">
-          <span th:if="${#fields.hasErrors('apellido2')}" th:errors="*{apellido2}" style="color: red"></span><br/>
+        <div class="input-box">
+          <span class="details">NOMBRE:<strong class="infofield" th:text="${usuario.nombre}">asd</strong></span>
         </div>
         <div class="input-box">
-          <span class="details">EMAIL:</span>
-          <input type="text" th:field="*{email}" placeholder="Escribe aquí tu email.">
-          <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span><br/>
-        </div>
-        <div class="input-box2">
-          <span class="details">ESTATURA (m):</span>
-          <input type="text" th:field="*{altura}" placeholder="¿Cuánto mides?">
-          <span th:if="${#fields.hasErrors('altura')}" th:errors="*{altura}" style="color: red"></span><br/>
-        </div>
-        <div class="input-box2">
-          <span class="details">PESO (Kg):</span>
-          <input type="text" th:field="*{peso}" placeholder="¿Cuánto pesas?">
-          <span th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}" style="color: red"></span><br/>
+          <span class="details">1º APELLIDO:<strong class="infofield" th:text="${usuario.apellido1}">asd</strong></span>
         </div>
         <div class="input-box">
-          <span class="details">Nº DE CUENTA:</span>
-          <input type="text" th:field="*{cuentaBancaria}" placeholder="Escribe el número de cuenta donde se te cargará la mensualdiad.">
-          <span th:if="${#fields.hasErrors('cuentaBancaria')}" th:errors="*{cuentaBancaria}" style="color: red"></span><br/>
+          <span class="details">2º APELLIDO:<strong class="infofield" th:text="${usuario.apellido2}">asd</strong></span>
         </div>
         <div class="input-box">
-          <span class="details">CONTRASEÑA:</span>
-          <input type="text" th:field="*{contrasenia}" placeholder="Escribe una contraseña para tu cuenta.">
-          <span th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}" style="color: red"></span><br/>
+          <span class="details">FECHA DE NACIMIENTO:<strong class="infofield" th:text="${usuario.fechaNacimiento}">asd</strong></span>
         </div>
-      </div>
-      <div class="button">
-        <input type="submit" value="REGISTRARME">
+        <div class="input-box">
+          <span class="details">EMAIL:<strong class="infofield" th:text="${usuario.email}">asd</strong></span>
+        </div>
+        <div class="input-box">
+          <span class="details">ESTATURA:<strong class="infofield" th:text="${usuario.altura}">asd</strong></span>
+        </div>
+        <div class="input-box">
+          <span class="details">PESO:<strong class="infofield" th:text="${usuario.peso}">asd</strong></span>
+        </div>
+        <div class="input-box">
+          <span class="details">Nº DE CUENTA:<strong class="infofield" th:text="${usuario.cuentaBancaria}">asd</strong></span>
+        </div>
       </div>
     </form>
   </div>

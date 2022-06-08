@@ -9,9 +9,9 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background: url(../Imagenes/8.jpg) no-repeat;
+    background: url(http://localhost:8080/Imagenes/11.jpg) no-repeat;
     background-size: 100%;
-    background: #000;
+    background-attachment: fixed;
 }
 
 .encabezado {
@@ -51,6 +51,10 @@
     color: #00ff5d;
 }
 
+.temp2 {
+    width: 240px;
+}
+
 .encabezado .encabezadodos .temp2 a:hover{
     color: #ff8000;
 }
@@ -58,7 +62,7 @@
 h1 {
     text-shadow: 1px 1px 2px black;
     color: #f0f0f0;
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
     margin-top: 30px;
     margin-bottom: 40px;
@@ -79,6 +83,7 @@ th {
 }
 
 a {
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
 }
@@ -88,7 +93,7 @@ a {
 }
 
 th span a:hover{
-    color: #f0f0f0;
+    color: #FF8800;
 }
 
 tr, td {
@@ -118,21 +123,31 @@ tr:hover .material-icons{
 }
 
 tr:hover .material-icons:hover {
-    color: #fff;
+    color: #ff8800;
 }
 
 tr:hover:not(#firstrow) {
     transform: scale(1.03);
 }
 
+strong {
+    color: #00ff5d;
+}
+
 </style>
 </head>
 <body>
     <div class="encabezado">
-        <h1>EJERCICIOS</h1>
+        <h1><strong>ENTRENAMIENTO</strong><span th:if="${usuario.rol}==0"> de <span th:text="${usuarioSaludo.nombre}"></span></span></h1>
         <div class="encabezadodos">
-            <div class="temp2">
-                <a href="#">
+            <div class="temp2" th:if="${usuario.rol}==0">
+                <a href="/listaUsuarios">
+                    <p>Volver a Clientes</p>
+                    <span class="material-icons"> reply </span>
+                </a>
+            </div>
+            <div class="temp2" th:if="${usuario.rol}==1">
+                <a href="/menuCliente">
                     <p>Volver a Menú</p>
                     <span class="material-icons"> reply </span>
                 </a>
@@ -149,20 +164,24 @@ tr:hover:not(#firstrow) {
                 <th>INTENSIDAD</th>
                 <th>DURACIÓN</th>
                 <th>DESCANSO</th>
-                <th>EXPLICACIÓN</th>
+                <th>VIDEO</th>
+                <th th:if="${usuario.rol}=='0'">MODIFICAR</th>
+                <th th:if="${usuario.rol}=='0'">BORRAR</th>
             </tr>
         </thead>
         <tbody>
-            <!-- <tr th:each="tabla : ${tablaEjercicios}">
-                <th><span th:text ="${ejercicio.nombre}">El nombre del ejercicio</span></th>
+            <tr th:each="tabla : ${verTabla}">
+                <th><span th:text ="${tabla.ejercicioNombre}">El nombre del ejercicio</span></th>
                 <th><span th:text ="${tabla.series}">Series</span></th>
                 <th><span th:text ="${tabla.repeticiones}">Repeticiones</span></th>
                 <th><span th:text ="${tabla.peso}">Peso</span></th>
                 <th><span th:text ="${tabla.intensidad}">Intensidad</span></th>
                 <th><span th:text ="${tabla.duracion}">Duración</span></th>
                 <th><span th:text ="${tabla.descanso}">Descanso</span></th>
-                <th><a th:href="${ejercicio.url}"><span class="material-icons"> play_arrow </span></a></th>
-            </tr> -->
+                <th><a th:href="${tabla.url}" target="_blank"><span class="material-icons"> play_arrow </span></a></th>
+                <th th:if="${usuario.rol}=='0'"><a th:href="@{/modificarTabla/{id}(id=${tabla.id})}"><span class="material-icons"> edit_note </span></a></th>
+                <th th:if="${usuario.rol}=='0'"><a th:href="@{/eliminarTabla/{idtabla}(idtabla=${tabla.id})}"><span class="material-icons"> clear </span></a></th>
+            </tr>
         </tbody>
     </table>
 </body>

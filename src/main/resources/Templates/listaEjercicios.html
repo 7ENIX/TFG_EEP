@@ -9,9 +9,9 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background: url(Imagenes/8.jpg) no-repeat;
+    background: url(Imagenes/2.jpg) no-repeat;
     background-size: 100%;
-    background: #000;
+    background-attachment: fixed;
 }
 
 .encabezado {
@@ -68,12 +68,14 @@ h1 {
     margin-bottom: 40px;
 }
 
+
 table {
     box-sizing: content-box;
     border-collapse: collapse;
     min-width: 80%;
     margin: 0 auto 5rem;
     text-align: center;
+
 }
 
 th { 
@@ -99,7 +101,7 @@ thead tr:first-child {
 }
 
 tbody tr {
-    background: rgb(0 0 0 / 70%);
+    background: rgb(0 0 0 / 80%);
     color: #fff;
     border-bottom: 1px solid #00ff5d;
 }
@@ -121,6 +123,9 @@ tr:hover .material-icons:hover {
 tr:hover:not(#firstrow) {
     transform: scale(1.03);
 }
+
+.scroll{
+}
     
 </style>
 </head>
@@ -129,19 +134,27 @@ tr:hover:not(#firstrow) {
         <h1>EJERCICIOS</h1>
         <div class="encabezadodos">
             <div class="temp1">
-                <a th:if="${usuario.rol}=='0'"href="#">
+                <a th:if="${usuario.rol}=='0'"href="/añadirEjercicio">
                     <p>Añadir Ejercicio</p>
                     <span class="material-icons"> playlist_add </span>
                 </a>
             </div>
-            <div class="temp2">
-                <a href="#">
+            <div class="temp2" th:if="${usuario.rol}==0">
+                <a href="/menuEntrenador">
+                    <p>Volver a Menú</p>
+                    <span class="material-icons"> reply </span>
+                </a>
+            </div>
+            <div class="temp2" th:if="${usuario.rol}==1">
+                <a href="/menuCliente">
                     <p>Volver a Menú</p>
                     <span class="material-icons"> reply </span>
                 </a>
             </div>
         </div>
     </div>
+
+    
     <table id="racetimes">
         <thead>
             <tr id="firstrow">
@@ -156,11 +169,12 @@ tr:hover:not(#firstrow) {
             <tr th:each="ejercicio : ${listaEjercicios}">
                 <th><span th:text ="${ejercicio.zona}">...</a></span></th>
                 <th><span th:text ="${ejercicio.nombre}">...</span></th>
-                <th><a th:href="${ejercicio.url}"><span class="material-icons"> play_arrow </span></a></th>
-                <th th:if="${usuario.rol}=='0'"><a href="#"><span class="material-icons"> edit_note </span></a></th>
+                <th><a th:href="${ejercicio.url}" target="_blank"><span class="material-icons"> play_arrow </span></a></th>
+                <th th:if="${usuario.rol}=='0'"><a th:href="@{/modificarEjercicio/{id}(id=${ejercicio.id})}"><span class="material-icons"> edit_note </span></a></th>
                 <th th:if="${usuario.rol}=='0'"><a th:href="@{/eliminarEjercicio/{id}(id=${ejercicio.id})}"><span class="material-icons"> clear </span></a></th>
             </tr>
         </tbody>
     </table>
+    
 </body>
 </html>

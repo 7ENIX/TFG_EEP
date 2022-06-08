@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+<head>
+    <meta charset="utf-8">
+    <title>Añadir TABLA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+        * {
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: url(http://localhost:8080/Imagenes/10.jpg) no-repeat;
+            background-size: 100%;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            padding: 25px 30px;
+            border-radius: 5px;
+            background: rgb(0 0 0 / 65%);
+        }
+
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .temp2 a{
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .temp2 a p{
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .material-icons{
+            font-size: 36px;
+        }
+
+        .temp2 a:hover{
+            color: #ff8000;
+        }
+
+        .container form .user-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 0 12px 0;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: calc(100% / 2 - 20px);
+
+        }
+
+        .user-details .input-box .details {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .user-details .input-box input {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            color: #ccc;
+            background: #181818;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding-left: 15px;
+            font-size: 16px;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .user-details .input-box input:focus,
+        .user-details .input-box input:valid {
+            border-color: #00ff5d;
+        }
+
+        /*------------------------------------------*/
+
+        form .user-details .input-box2 {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .user-details .input-box2 .details {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .user-details .input-box2 input {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            color: #ccc;
+            background: #181818;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding-left: 15px;
+            font-size: 16px;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .user-details .input-box2 input:focus,
+        .user-details .input-box2 input:valid {
+            border-color: #00ff5d;
+        }
+
+        select {
+            margin-bottom: 15px;
+            width: 100%;
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #fff;
+            height: 45px;
+            width: 100%;
+            outline: none;
+            color: #ccc;
+            background: #181818;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding-left: 15px;
+            font-size: 16px;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+            border-color: #00ff5d;
+        }
+
+        form .button {
+            height: 45px;
+            margin: 45px 100px;
+        }
+
+        form .button input {
+            height: 100%;
+            width: 100%;
+            outline-color: none;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            background: #ededed;
+        }
+
+        form .button input:hover {
+            color: #1e1e1e;
+            background: #00ff5d;
+        }
+
+        strong {
+            color: #00ff5d;
+        }
+    }
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <p><strong>AÑADIR</strong> UN EJERCICIO A LA TABLA</p>
+            <div class="temp2">
+                <a href="/listaUsuarios">
+                  <p>Volver a Clientes</p>
+                  <span class="material-icons"> reply </span>
+              </a>
+          </div>
+      </div>
+      <br>
+      <form action = "#" th:action="@{/añadirTablaOK}" th:object="${tabla}" method="post">
+        <div class="user-details">
+            <select th:field="*{usuarioId}" style="display: none;">
+                <option th:value="${id}"></option>
+            </select>
+            <div class="input-box2">
+                <span class="details">EJERCICIO:</span>
+                <select th:field="*{ejercicioId}">
+                    <option th:each = "i : ${listaEjercicios}" th:value="${i.id}"><span th:text="${i.nombre}">nombre</span></option>
+                </select>
+                <br>
+            </div>
+            <div class="input-box">
+                <span class="details">SERIES:</span>
+                <input type="number" th:field="*{series}" placeholder="Indica el nº de series del ejercicio."><br/>
+            </div>
+            <div class="input-box">
+                <span class="details">REPETICIONES:</span>
+                <input type="number" th:field="*{repeticiones}" placeholder="Indica el nº de repeticiones del ejercicio."><br/>
+            </div>
+            <div class="input-box">
+                <span class="details">PESO (KG):</span>
+                <input type="number" th:field="*{peso}" placeholder="Indica el peso que debe manipular."><br>
+            </div>
+            <div class="input-box">
+                <span class="details">INTENSIDAD:</span>
+                <select th:field="*{intensidad}">
+                    <option th:value="Baja">Baja</option>
+                    <option th:value="Media">Media</option>
+                    <option th:value="Alta">Alta</option>
+                </select>
+                <br>
+            </div>
+            <div class="input-box">
+                <span class="details">DURACIÓN:</span>
+                <input type="text" th:field="*{duracion}" placeholder="Escribe la duración del ejercicio."><br>
+            </div>
+            <div class="input-box">
+                <span class="details">DESCANSO:</span>
+                <input type="text" th:field="*{descanso}" placeholder="Escribe el tiempo de recuperación.">
+                <span th:if="${#fields.hasErrors('descanso')}" th:errors="*{descanso}" style="color: red"></span>
+                <br>
+            </div>
+        </div>
+        <div class="button">
+            <input type="submit" value="CREAR EJERCICIO DE TABLA">
+        </div>
+    </form>
+</div>
+</body>
+</html>

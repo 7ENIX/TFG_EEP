@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Modificar Perfil</title>
 </head>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Roboto:300');
@@ -21,7 +21,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background: url(Imagenes/10.jpg) no-repeat;
+    background: url(http://localhost:8080/Imagenes/10.jpg) no-repeat;
     background-size: 100%;
   }
 
@@ -30,7 +30,7 @@
     width: 100%;
     padding: 25px 30px;
     border-radius: 5px;
-    background: rgb(0 0 0 / 70%);
+    background: rgb(0 0 0 / 80%);
   }
 
   .container .title {
@@ -162,16 +162,18 @@
 <body>
   <div class="container">
     <div class="title">
-      <p><strong>REGISTRO</strong> DE USUSARIO</p>
+      <p><strong>MODIFICAR</strong> PERFIL</p>
       <div class="temp2">
-        <a href="/">
-          <p>Volver al login</p>
+        <a th:href="@{/verPerfil/{id}(id=${usuario.id})}">
+          <p>Volver al perfil</p>
           <span class="material-icons"> reply </span>
         </a>
       </div>
     </div>
     <br>
-    <form action = "#" th:action="@{/registro}" th:object="${usuario}" method="post">
+    <form action = "#" th:action="@{/modificarPerfilOK}" th:object="${usuario}" method="post">
+      <input type="hidden" th:field="*{id}">
+      <input type="hidden" th:field="*{rol}">
       <div class="user-details">
         <div class="input-box2">
           <span class="details">NOMBRE:</span>
@@ -180,7 +182,7 @@
         </div>
         <div class="input-box2">
           <span class="details">FECHA DE NACIMIENTO:</span>
-          <input type="date" th:field="*{fechaNacimiento}" placeholder="Indica tu fecha de nacimiento.">
+          <input type="text" th:field="*{fechaNacimiento}" placeholder="Indica tu fecha de nacimiento.">
           <span th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}" style="color: red"></span><br/>
           <span th:if="${MensajeDeError!=null}" th:text="${MensajeDeError}" style="color: red"></span>
         </div>
@@ -200,12 +202,12 @@
           <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span><br/>
         </div>
         <div class="input-box2">
-          <span class="details">ESTATURA (m):</span>
+          <span class="details">ESTATURA:</span>
           <input type="text" th:field="*{altura}" placeholder="¿Cuánto mides?">
           <span th:if="${#fields.hasErrors('altura')}" th:errors="*{altura}" style="color: red"></span><br/>
         </div>
         <div class="input-box2">
-          <span class="details">PESO (Kg):</span>
+          <span class="details">PESO:</span>
           <input type="text" th:field="*{peso}" placeholder="¿Cuánto pesas?">
           <span th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}" style="color: red"></span><br/>
         </div>
@@ -221,7 +223,7 @@
         </div>
       </div>
       <div class="button">
-        <input type="submit" value="REGISTRARME">
+        <input type="submit" value="MODIFICAR MIS DATOS">
       </div>
     </form>
   </div>

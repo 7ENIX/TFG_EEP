@@ -9,9 +9,9 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background: url(Imagenes/8.jpg) no-repeat;
+    background: url(Imagenes/12.jpg) no-repeat;
     background-size: 100%;
-    background: #000;
+    background-attachment: fixed;
 }
 
 .encabezado {
@@ -107,7 +107,7 @@ thead tr:first-child {
 }
 
 tbody tr {
-    background: rgb(0 0 0 / 70%);
+    background: rgb(0 0 0 / 85%);
     color: #fff;
     border-bottom: 1px solid #00ff5d;
 }
@@ -137,13 +137,19 @@ tr:hover:not(#firstrow) {
         <h1>COMIDAS</h1>
         <div class="encabezadodos">
             <div class="temp1">
-                <a th:if="${usuario.rol}=='0'"href="#">
+                <a th:if="${usuario.rol}=='0'"href="/añadirComida">
                     <p>Añadir Comida</p>
                     <span class="material-icons"> playlist_add </span>
                 </a>
             </div>
-            <div class="temp2">
-                <a href="#">
+            <div class="temp2" th:if="${usuario.rol}==0">
+                <a href="/menuEntrenador">
+                    <p>Volver a Menú</p>
+                    <span class="material-icons"> reply </span>
+                </a>
+            </div>
+            <div class="temp2" th:if="${usuario.rol}==1">
+                <a href="/menuCliente">
                     <p>Volver a Menú</p>
                     <span class="material-icons"> reply </span>
                 </a>
@@ -162,10 +168,9 @@ tr:hover:not(#firstrow) {
         <tbody>
             <tr th:each="comida : ${listaComidas}">
                 <th><span th:text ="${comida.nombre}">...</a></span></th>
-                <th><a th:href="${comida.url}"><span class="material-icons"> play_arrow </span></a></th>
-                <!-- <th th:if="${usuario.rol}=='0'"><a th:href=""><span class="material-icons"> playlist_add </span></a></th> -->
-                <th th:if="${usuario.rol}=='0'"><a href=""><span class="material-icons"> edit_note </span></a></th>
-                <th th:if="${usuario.rol}=='0'"><a href="@{/eliminarComida/{id}(id=${comida.id})}"><span class="material-icons"> clear </span></a></th>
+                <th><a th:href="${comida.url}" target="_blank"><span class="material-icons"> play_arrow </span></a></th>
+                <th th:if="${usuario.rol}=='0'"><a th:href="@{/modificarComida/{id}(id=${comida.id})}"><span class="material-icons"> edit_note </span></a></th>
+                <th th:if="${usuario.rol}=='0'"><a th:href="@{/eliminarComida/{id}(id=${comida.id})}"><span class="material-icons"> clear </span></a></th>
             </tr>
         </tbody>
     </table>
