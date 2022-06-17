@@ -218,7 +218,7 @@
         </div>
         <div class="input-box">
           <span class="details">CONTRASEÑA:</span>
-          <input type="text" th:field="*{contrasenia}" placeholder="Escribe una contraseña para tu cuenta.">
+          <input type="password" th:field="*{contrasenia}" placeholder="Escribe una contraseña para tu cuenta.">
           <span th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}" style="color: red"></span><br/>
         </div>
       </div>

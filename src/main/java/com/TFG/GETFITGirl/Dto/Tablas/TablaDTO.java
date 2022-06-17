@@ -11,6 +11,11 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class TablaDTO {
 
+    /**
+     * NOTA: Esta clase no se refiere a una tabla de ejercicios, sino a un ejercicio
+     * (cada uno de ellos) de la tabla de entrenamiento diário de los clientes.
+     */
+
     // ::::::::::::::::::::::: ATRIBUTOS ::::::::::::::::::::::: //
 
     private int id;

@@ -14,6 +14,15 @@ public class GFGSetUp implements ApplicationRunner {
     @Autowired
     private GFGService GFGServiceImpl;
 
+    /**
+     * Método que se ejecutará al iniciar la aplicación.
+     * Este método sirve como modo de introducción de entities en la base de datos
+     * de la aplicación. Así, cuando ejecutemos la aplicación se añadirán a la
+     * base de datos de la aplicación nuevos usuarios, ejercicios y comidas.
+     * Esto solo pasará la 1ª vez que arranquemos la aplicación.
+     * @param args
+     * @throws Exception
+     */
     @Override
     public void run(ApplicationArguments args) throws Exception {
         if (GFGServiceImpl.listadoUsuarios().size() == 0) {
@@ -26,7 +35,7 @@ public class GFGSetUp implements ApplicationRunner {
                     "DavidTrainer@Gmail.com",
                     "1992-10-15",
                     180,
-                    70,
+                    80,
                     "ES521234567890",
                     "1234"));
 
@@ -37,11 +46,11 @@ public class GFGSetUp implements ApplicationRunner {
                     "Martínez",
                     "Peñas",
                     "CarlotaMP@Gmail.com",
-                    "1991-09-30",
-                    181,
+                    "1991-09-21",
+                    171,
                     70,
                     "ES520987654321",
-                    "0987"));
+                    "1234"));
 
             GFGServiceImpl.añadirUsuario(new UsuarioEntity(
                     0,
@@ -51,10 +60,10 @@ public class GFGSetUp implements ApplicationRunner {
                     "Pérez",
                     "MariaCP@Gmail.com",
                     "2001-06-01",
-                    181,
-                    71,
+                    170,
+                    60,
                     "ES520987654322",
-                    "2345"));
+                    "1234"));
 
             GFGServiceImpl.añadirUsuario(new UsuarioEntity(
                     0,
@@ -63,11 +72,11 @@ public class GFGSetUp implements ApplicationRunner {
                     "Orduna",
                     "Castillo",
                     "SaraOrCas@Gmail.com",
-                    "2001-06-01",
-                    181,
-                    71,
+                    "1998-03-04",
+                    158,
+                    58,
                     "ES520987654337",
-                    "5678"));
+                    "1234"));
 
             GFGServiceImpl.añadirUsuario(new UsuarioEntity(
                     0,
@@ -76,11 +85,11 @@ public class GFGSetUp implements ApplicationRunner {
                     "Lozano",
                     "Morillas",
                     "Maite_LM@Gmail.com",
-                    "2001-06-01",
-                    181,
-                    71,
+                    "2000-08-11",
+                    165,
+                    67,
                     "ES520987658740",
-                    "asdf"));
+                    "1234"));
         }
 
 

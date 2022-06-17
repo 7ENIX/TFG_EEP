@@ -210,7 +210,7 @@
           <span th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}" style="color: red"></span><br/>
         </div>
         <div class="input-box">
-          <span class="details">Nº DE CUENTA:</span>
+          <span class="details">Nº DE CUENTA (IBAN):</span>
           <input type="text" th:field="*{cuentaBancaria}" placeholder="Escribe el número de cuenta donde se te cargará la mensualdiad.">
           <span th:if="${#fields.hasErrors('cuentaBancaria')}" th:errors="*{cuentaBancaria}" style="color: red"></span><br/>
         </div>

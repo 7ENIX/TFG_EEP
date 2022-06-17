@@ -69,10 +69,6 @@
   padding-bottom: 1rem;
 }
 
-#signin .logo {
-  margin-bottom: 8vh;
-}
-
 #signin .logo img {
   width: 300px;
 }
@@ -329,7 +325,7 @@ li:before {
     <div id="left">
       <div id="signin">
         <div class="logo">
-          <img src="" alt="Sluralpright"/>
+          <img src="Imagenes/logo.png" alt="Sluralpright"/>
         </div>
         <form action = "#" th:action="@{/loginOK}" th:object="${usuario}" method="post">
           <!-- <div class="inputs"> -->
@@ -345,7 +341,7 @@ li:before {
             <button type="submit" class="primary-btn">Iniciar sesión</button>
           </form>
           <div class="links">
-            <a href="#">¿Has olvidado tu nombre de usuario o contraseña?</a>
+            <a href="/pass" target="_blank">¿Has olvidado tu nombre de usuario o contraseña?</a>
           </div>
           <div class="or">
             <hr class="bar"/>
@@ -356,16 +352,16 @@ li:before {
         </div>
         <div class="social">
           <p>Sígueme en mis redes sociales :</p>
-          <a href="#"><i class="icon-facebook"></i></a>
-          <a href="#"><i class="icon-twitter"></i></a>
-          <a href="#"><i class="icon-instagram"></i></a>
-          <a href="#"><i class="icon-youtube"></i></a>
-          <a href="#"><i class="icon-spotify"></i></a>
+          <a href="https://es-es.facebook.com/myvitale/" target="_blank"><i class="icon-facebook"></i></a>
+          <a href="https://twitter.com/myvitale?lang=es" target="_blank"><i class="icon-twitter"></i></a>
+          <a href="https://www.instagram.com/vitale_software_deportivo/" target="_blank"><i class="icon-instagram"></i></a>
+          <a href="https://www.youtube.com/c/IntelligentSystemVitale" target="_blank"><i class="icon-youtube"></i></a>
+          <a href="https://open.spotify.com/playlist/3FH4O5hhWACeBrw9zWBxRO?si=90e3b71fd1614d79" target="_blank"><i class="icon-spotify"></i></a>
         </div>
         <footer id="main-footer">
-          <p>Copyright &copy; 2022, Igorcito All Rights Reserved</p>
+          <p>Copyright &copy; 2022, GetFitGirl, All Rights Reserved</p>
           <div>
-            <a href="#">Términos de uso</a> | <a href="#">Política de privacidad</a>
+            <a href="/terminos" target="_blank">Términos de uso</a> | <a href="/politica" target="_blank">Política de privacidad</a>
           </div>
         </footer>
       </div>

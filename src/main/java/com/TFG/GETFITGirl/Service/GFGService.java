@@ -15,6 +15,10 @@ import java.util.Optional;
 
 public interface GFGService {
 
+    /**
+     * Todos los comentarios que describen cada método están en "GFGServiceImpl".
+     */
+
     // :::::::::::::::::::::: MÉTODOS PARA USUARIOS :::::::::::::::::::::: //
     List<UsuarioEntity> listadoUsuarios();
 
@@ -29,8 +33,6 @@ public interface GFGService {
     UsuarioEntity findUsuarioById(int id);
 
     List<UsuarioEntity> findUsuarioByRol(int id);
-
-    Boolean validacionUsuario(UsuarioDTO usuario);
 
     Boolean validacionFechaNacimiento(String fecha);
 
@@ -74,20 +76,25 @@ public interface GFGService {
 
 
     // :::::::::::::::::::::: MÉTODOS PARA CASTEAR :::::::::::::::::::::: //
+
+    //Casteos de la clase Usuario.
     UsuarioDTO usuarioEntityaDTOMM(UsuarioEntity usuarioEntity);
     UsuarioEntity usuarioDTOaEntityMM(UsuarioDTO usuarioDTO);
 
+    //Casteos de la clase Ejercicio.
     EjercicioDTO ejercicioEntityaDTOMM(EjercicioEntity ejercicioEntity);
     EjercicioEntity ejercicioDTOaEntityMM(EjercicioDTO ejercicioDTO);
 
+    //Casteos de la clase Comida.
     ComidaDTO comidaEntityaDTOMM(ComidaEntity comidaEntity);
     ComidaEntity comidaDTOaEntityMM(ComidaDTO comidaDTO);
 
+    //Casteos de la clase TABLA.
     TablaDTO tablaEntityaDTOMM(TablaEntity tablaEntity);
     TablaEntity tablaDTOaEntityMM(TablaDTO tablaDTO);
-
     TablaResponse tablaEntityaResponse(TablaEntity tablaEntity);
 
+    //Casteo para una lista de objetos tipo Tabla.
     List<TablaResponse> tablaEjercicios(List<TablaEntity> lista);
 
 }
